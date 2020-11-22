@@ -21,6 +21,10 @@
 
 <title>ShopDrop - ${pageTitle}</title>
 
+<script>
+	window.menu = '${title}';
+</script>
+
 <!-- Bootstrap core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
@@ -36,8 +40,20 @@
 
 
 	<!-- Page Content -->
+
+	<!-- Load Homepage -->
 	<c:if test="${ userClickHome==true}">
 		<%@include file="./home.jsp"%>
+	</c:if>
+
+	<!-- Load About -->
+	<c:if test="${ userClickAbout==true}">
+		<%@include file="./about.jsp"%>
+	</c:if>
+
+	<!-- Load Contact -->
+	<c:if test="${ userClickContact==true}">
+		<%@include file="./contact.jsp"%>
 	</c:if>
 
 	<!-- Footer -->
@@ -46,6 +62,9 @@
 	<!-- Bootstrap core JavaScript -->
 	<script src="${js}/jquery.min.js"></script>
 	<script src="${js}/bootstrap.bundle.min.js"></script>
+	
+	<!-- Custom js  -->
+	<script src="${js}/myapp.js"></script>
 
 </body>
 
