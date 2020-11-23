@@ -28,7 +28,7 @@
 							<img class="d-block img-fluid" src="http://placehold.it/900x350"
 								alt="Second slide">
 						</div>
-						<div class="carousel-item">
+			 			<div class="carousel-item">
 							<img class="d-block img-fluid" src="http://placehold.it/900x350"
 								alt="Third slide">
 						</div>
