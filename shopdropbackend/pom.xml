@@ -13,9 +13,19 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<javaee.version>7.0</javaee.version>
+		<spring.version>5.2.10.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
+	
+	
+	<!-- Spring Dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

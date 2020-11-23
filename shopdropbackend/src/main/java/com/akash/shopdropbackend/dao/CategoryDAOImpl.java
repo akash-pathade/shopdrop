@@ -3,8 +3,11 @@ package com.akash.shopdropbackend.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.akash.shopdropbackend.dto.Category;
 
+@Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO {
 
 	private static List<Category> categories = new ArrayList<>();

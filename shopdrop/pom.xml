@@ -17,6 +17,14 @@
 
 
 	<dependencies>
+
+		<!-- Linking Backend Project -->
+		<dependency>
+			<groupId>com.akash</groupId>
+			<artifactId>shopdropbackend</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- Java EE Dependency -->
 		<dependency>
 			<groupId>javax</groupId>
