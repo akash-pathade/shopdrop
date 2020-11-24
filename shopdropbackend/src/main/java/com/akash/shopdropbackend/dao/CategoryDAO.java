@@ -11,4 +11,7 @@ public interface CategoryDAO {
 	
 //  Method to return a category based on id
     public Category get(int id);
+    
+//    Method to add a category to DB
+    public boolean add(Category category);
 }
