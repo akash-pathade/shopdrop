@@ -15,6 +15,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<javaee.version>7.0</javaee.version>
 		<spring.version>5.2.10.RELEASE</spring.version>
+		<hibernate.version>5.2.7.Final</hibernate.version>
+		<mysql.version>8.0.19</mysql.version>
 	</properties>
 
 	<dependencies>
@@ -32,6 +34,42 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Spring orm dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<!-- Hibernate Dependency -->		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		
+		
+		<!-- Database Connection Pooling -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.1.1</version>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>			
+		</dependency>
+		
+		<!-- MySql dependency -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${mysql.version}</version>
+		    <scope>runtime</scope>
+		</dependency>
+		
 	</dependencies>
 	<build>
 		<!-- Updated to java 1.8 -->
