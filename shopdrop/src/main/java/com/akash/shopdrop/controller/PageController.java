@@ -44,9 +44,10 @@ public class PageController {
 	@RequestMapping(value = { "/show/all/products" })
 	public ModelAndView showAllProducts() {
 		ModelAndView mv = new ModelAndView("page");
+		//To be coded
 		mv.addObject("categories", categoryDAO.listCategories());
 		mv.addObject("pageTitle", "All Products");
-		mv.addObject("userClickAllProject", true);
+		mv.addObject("userClickAllProducts", true);
 		return mv;
 	}
 
@@ -64,7 +65,7 @@ public class PageController {
 		mv.addObject("category", category);
 		
 		mv.addObject("pageTitle", category.getName());
-		mv.addObject("userClickCategoryProject", true);
+		mv.addObject("userClickCategoryProducts", true);
 		return mv;
 	}
 
