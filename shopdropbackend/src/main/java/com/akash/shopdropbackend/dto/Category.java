@@ -1,11 +1,12 @@
 package com.akash.shopdropbackend.dto;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.Entity;
+
 
 @Entity
 public class Category {
@@ -26,7 +27,7 @@ public class Category {
 	private boolean active = true;
 	
 	
-//	CPnstructors
+//	Constructors
 
 	public Category(int id, String name, String description, String imageURL, boolean active) {
 		super();
@@ -35,6 +36,13 @@ public class Category {
 		this.description = description;
 		this.imageURL = imageURL;
 		this.active = active;
+	}
+	
+	public Category(String name, String description, String imageURL) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.imageURL = imageURL;
 	}
 
 	public Category() {

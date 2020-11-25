@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.akash.shopdropbackend.dto.Category;
 
 @Repository("categoryDAO")
+@Transactional
 public class CategoryDAOImpl implements CategoryDAO {
 	
 //	Getting the Session Factory Bean
