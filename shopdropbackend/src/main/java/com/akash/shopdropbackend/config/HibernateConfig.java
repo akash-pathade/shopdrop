@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class HibernateConfig {
 
 //	Change these values touse a different database
-	private static final String DATABASE_URL = "jdbc:mysql://localhost/shopdrop/";
+	private static final String DATABASE_URL = "jdbc:mysql://localhost/shopdrop";
 	private static final String DATABASE_DRIVER = "com.mysql.cj.jdbc.Driver";
 	private static final String DATABASE_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
 	private static final String DATABASE_USERNAME = "root";
@@ -60,7 +60,7 @@ public class HibernateConfig {
 		properties.put("hibernate.show_sql", "true"); // "true" in strings
 		properties.put("hibernate.format_sql", "true"); // "true" in strings
 
-		return null;
+		return properties;
 	}
 
 	@Bean
