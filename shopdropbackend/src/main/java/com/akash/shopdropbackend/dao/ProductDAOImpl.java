@@ -81,7 +81,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	@Override
 	public List<Product> getLatestActiveProducts(int count) {
-		return sessionFactory.getCurrentSession().createQuery("FROM PRODUCT WHERE active = :active ORDER BY id", Product.class)
+		return sessionFactory.getCurrentSession().createQuery("FROM Product WHERE active = :active ORDER BY id", Product.class)
 				.setParameter("active", true)
 				.setFirstResult(0)
 				.setMaxResults(count)
