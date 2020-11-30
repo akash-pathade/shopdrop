@@ -15,20 +15,42 @@
 					<c:if test="${userClickAllProducts== true}">
 						<ol class="breadcrumb">
 							<li><a href="${contextRoot }/home">Home</a></li>
-							<li class="active"> / All Products</li>
+							<li class="active">/ All Products</li>
 						</ol>
 					</c:if>
 
 					<c:if test="${userClickCategoryProducts== true}">
 						<ol class="breadcrumb">
 							<li><a href="${contextRoot }/home">Home</a></li>
-							<li class="active"> / Category</li>
-							<li class="active"> / ${category.name}</li>
+							<li class="active">/ Category</li>
+							<li class="active">/ ${category.name}</li>
 						</ol>
 					</c:if>
 				</div>
 			</div>
-		</div>
-	</div>
 
-</div>
+
+			<!-- Adding jquery Datatable -->
+
+			<div class="row">
+				<div class="col-xs-12">
+
+					<table class="table table-striped table-bordered"
+						id="productListTable">
+
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+
+							</tr>
+						</thead>
+					</table>
+
+
+				</div>
+
+			</div>
+		</div>
+
+	</div>

@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Product {
 
@@ -15,48 +17,43 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String code;
+	
 	private String name;
+	
 	private String brand;
+	
+	@JsonIgnore
 	private String description;
 	@Column(name = "unit_price")
 	private double unitPrice;
+	
 	private int quantity;
 	@Column(name = "is_active")
+	@JsonIgnore
 	private boolean active;
-	@Column(name = "category_id")
-	private int categoryId;
-	@Column(name = "supplier_id")
-	private int supplierId;
-	private int purchases;
-	private int views;
 	
+	@Column(name = "category_id")
+	@JsonIgnore
+	private int categoryId;
+	
+	@Column(name = "supplier_id")
+	@JsonIgnore
+	private int supplierId;
+	
+	private int purchases;
+	
+	private int views;
+
 //	Constructors
 	public Product() {
 		super();
-		this.code = "PRD"+UUID.randomUUID().toString().substring(26).toUpperCase();
+		this.code = "PRD" + UUID.randomUUID().toString().substring(26).toUpperCase();
 	}
-	
-	
-public Product(String name, String brand, String description, double unitPrice, int quantity, boolean active,
-		int categoryId, int supplierId, int purchases, int views) {
-	super();
-	this.code = "PRD"+UUID.randomUUID().toString().substring(26).toUpperCase(); 
-	this.name = name;
-	this.brand = brand;
-	this.description = description;
-	this.unitPrice = unitPrice;
-	this.quantity = quantity;
-	this.active = active;
-	this.categoryId = categoryId;
-	this.supplierId = supplierId;
-	this.purchases = purchases;
-	this.views = views;
-}
-
 
 //	Getters and setters
-	
+
 	public String getName() {
 		return name;
 	}
@@ -75,6 +72,14 @@ public Product(String name, String brand, String description, double unitPrice, 
 
 	public String getDescription() {
 		return description;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getCode() {
+		return code;
 	}
 
 	public void setDescription(String description) {
@@ -108,7 +113,6 @@ public Product(String name, String brand, String description, double unitPrice, 
 	public int getCategoryId() {
 		return categoryId;
 	}
-
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
