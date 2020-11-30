@@ -9,8 +9,8 @@ $(function(){
 		$('#contact').addClass('active');
 		break;
 		
-		case 'Products':
-		$('#products').addClass('active');
+		case 'All Products':
+		$('#listProducts').addClass('active');
 		break;
 		
 		default:
@@ -18,4 +18,37 @@ $(function(){
 		break;
 		
 	}
+	
+	//Code for Jquery Data Table
+	//create dataset
+	var products =[
+		['1','ABC'],
+		['2','bh'],
+		['3','asf'],
+		['4','dvca'],
+		['5','nsd'],
+		['6','sef'],
+		['61','dv'],
+		['7','qwdcv'],
+		['8','evg'],
+		['9','efwva'],
+		['10','svDZ'],
+		['11','fe']
+	];
+	
+	var $table =$('#productListTable');
+	if($table.length){
+		/*console.log('inside table');*/
+		$table.DataTable({
+			pageLength: 5,
+			data:products
+			
+		});
+		
+	}
+	
+	
+	
+	
+	
 });

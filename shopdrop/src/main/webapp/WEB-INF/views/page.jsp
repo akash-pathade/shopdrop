@@ -31,6 +31,9 @@
 <!-- Bootstrap theme-->
 <link href="${css}/bootstrapTheme.css" rel="stylesheet">
 
+<!-- Bootstrap theme-->
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet">
+
 <!-- Custom styles for this template -->
 <link href="${css}/shopdrop-homepage.css" rel="stylesheet">
 
@@ -54,9 +57,10 @@
 			<c:if test="${ userClickAbout==true}">
 				<%@include file="./about.jsp"%>
 			</c:if>
-			
+
 			<!-- Load Products -->
-			<c:if test="${ userClickAllProducts==true or userClickCategoryProducts==true }">
+			<c:if
+				test="${ userClickAllProducts==true or userClickCategoryProducts==true }">
 				<%@include file="./listProducts.jsp"%>
 			</c:if>
 
@@ -73,8 +77,9 @@
 		<script src="${js}/jquery.min.js"></script>
 		<script src="${js}/bootstrap.bundle.min.js"></script>
 
-		<!-- Custom js  -->
-		<script src="${js}/myapp.js"></script>
+		<!-- Jquery DataTable CDN -->
+		<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+		</script> <!-- Custom js  --> <script src="${js}/myapp.js"></script>
 	</div>
 </body>
 
