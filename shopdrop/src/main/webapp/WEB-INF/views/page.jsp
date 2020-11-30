@@ -23,6 +23,7 @@
 
 <script>
 	window.menu = '${pageTitle}';
+	window.contextRoot ='${contextRoot}';
 </script>
 
 <!-- Bootstrap core CSS -->
