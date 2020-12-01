@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.akash.shopdrop.exception.ProductNotFoundException;
 import com.akash.shopdropbackend.dao.CategoryDAO;
 import com.akash.shopdropbackend.dao.ProductDAO;
 import com.akash.shopdropbackend.dto.Category;
@@ -85,11 +86,14 @@ public class PageController {
 
 	// Request Mapping for showing single product
 	@RequestMapping(value = { "/show/{id}/product" })
-	public ModelAndView showSingleProduct(@PathVariable("id") int id) {
+	public ModelAndView showSingleProduct(@PathVariable("id") int id) throws ProductNotFoundException {
 		ModelAndView mv = new ModelAndView("page");
 
 //		Increasing view of products
 		Product product = productDAO.get(id);
+		if(product==null)
+			throw new ProductNotFoundException();
+		
 		product.setViews(product.getViews() + 1);
 		productDAO.update(product);
 
