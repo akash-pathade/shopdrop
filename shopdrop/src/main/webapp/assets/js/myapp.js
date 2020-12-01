@@ -15,7 +15,7 @@ $(function() {
 
 		default:
 			$('#home').addClass('active');
-			$('#a_'+menu).addClass('active');
+			$('#a_' + menu).addClass('active');
 			break;
 
 	}
@@ -43,12 +43,12 @@ $(function() {
 			},
 
 			columns: [
-				
+
 				{
 					data: 'code',
 					mRender: function(data, type, row) {
-						
-						return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg"  class="dataTableImg"/>';
+
+						return '<img src="' + window.contextRoot + '/resources/images/' + data + '.jpg"  class="dataTableImg"/>';
 					}
 				},
 
@@ -62,7 +62,15 @@ $(function() {
 					}
 				},
 
-				{ data: 'quantity' },
+				{
+					data: 'quantity',
+					mRender: function(data, type, row) {
+						if (data < 1) {
+							return '<span style="color:red">Out of Stock!</span>';
+						}
+						return data;
+					}
+				},
 
 				{
 					data: 'id',
@@ -70,7 +78,13 @@ $(function() {
 						var url = ''
 						//show/PRD_ID/product
 						url += '<a href="' + window.contextRoot + '/show/' + data + '/product" class="btn btn-primary"> View</a>&#160;';
-						url += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"> Add to cart</a>';
+						if (row.quantity < 1) {
+							url += '<a href="javascript:void(0)" class="btn btn-success disabled"> Add to cart</a>';
+						}
+						else {
+							url += '<a href="' + window.contextRoot + '/cart/add/' + data + '/product" class="btn btn-success"> Add to cart</a>';
+							
+						}
 						return url;
 					}
 				}

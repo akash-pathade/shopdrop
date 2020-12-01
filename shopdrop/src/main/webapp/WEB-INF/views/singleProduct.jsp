@@ -18,7 +18,8 @@
 		<!-- For product Image -->
 		<div class="col-xs-12 col-md-4">
 
-			<img src="${images}/${product.code}.jpg" class="img img-responsive singleProdImg" />
+			<img src="${images}/${product.code}.jpg"
+				class="img img-responsive singleProdImg" />
 			<hr />
 		</div>
 
@@ -35,11 +36,28 @@
 			</h4>
 			<hr />
 
-			<h6>Hurry up only ${product.quantity} items left</h6>
+			<c:choose>
+				<c:when test="${product.quantity<1 }">
+					<h6>
+						<span style="color:red">Out of Stock!</span>
+					</h6>
+				</c:when>
+				<c:otherwise>
+					<h6>Hurry up only ${product.quantity} items left</h6>
+				</c:otherwise>
+			</c:choose>
 
-			<a href="${contextRoot}/cart/add/${product.id}/product"
-				class="btn btn-success">Add to cart</a> <a
-				href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
+			<c:choose>
+				<c:when test="${product.quantity<1 }">
+					<a href="javascript:void(0)" class="btn btn-success disabled">Add
+						to cart</a>
+				</c:when>
+				<c:otherwise>
+					<a href="${contextRoot}/cart/add/${product.id}/product"
+						class="btn btn-success">Add to cart</a>
+				</c:otherwise>
+			</c:choose>
+			<a href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 
 		</div>
 
