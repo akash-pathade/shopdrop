@@ -39,7 +39,7 @@
 
 			<a href="${contextRoot}/cart/add/${product.id}/product"
 				class="btn btn-success">Add to cart</a> <a
-				href="${contextRoot}/show/all/products" class="btn btn-info">Back</a>
+				href="${contextRoot}/show/all/products" class="btn btn-primary">Back</a>
 
 		</div>
 
