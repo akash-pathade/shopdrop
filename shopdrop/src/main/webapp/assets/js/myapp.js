@@ -48,7 +48,7 @@ $(function() {
 					data: 'code',
 					mRender: function(data, type, row) {
 						
-						return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg" width="120" height="100"/>';
+						return '<img src="'+window.contextRoot+'/resources/images/'+data+'.jpg"  class="dataTableImg"/>';
 					}
 				},
 
