@@ -10,7 +10,6 @@
 <c:set var="contextRoot" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="utf-8">
@@ -69,6 +68,12 @@
 			<c:if
 				test="${ userClickSingleProduct==true}">
 				<%@include file="./singleProduct.jsp"%>
+			</c:if>
+			
+			<!-- Show Manage Products -->
+			<c:if
+				test="${ userClickManageProducts==true}">
+				<%@include file="./manageProducts.jsp"%>
 			</c:if>
 			
 			
