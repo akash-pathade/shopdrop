@@ -4,6 +4,22 @@
 
 
 	<div class="row">
+
+		<!-- This is to display success msg if prod saved successfully -->
+		<c:if test="${not empty message}">
+			<div class="col-xs-12">
+				<div class="alert alert-success alert-dismissible">
+
+
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					${message}
+				</div>
+
+			</div>
+		</c:if>
+	</div>
+	<div class="row">
+
 		<div class="col-offset-4 col-md-8 justify-content-center">
 			<div class="panel panel-primary">
 				<!-- Heading -->
@@ -13,7 +29,8 @@
 
 				<div class="panel-body">
 					<!-- Form ELements -->
-					<sf:form class="form-horizontal" modelAttribute="product">
+					<sf:form class="form-horizontal" modelAttribute="product"
+						action="${contextRoot}/manage/products" method="POST">
 
 
 						<div class="form-group">
