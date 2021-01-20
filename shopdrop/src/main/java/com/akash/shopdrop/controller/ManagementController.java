@@ -2,10 +2,14 @@ package com.akash.shopdrop.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,55 +25,61 @@ import com.akash.shopdropbackend.dto.Product;
 @Controller
 @RequestMapping("/manage")
 public class ManagementController {
-	
+
 	@Autowired
 	CategoryDAO categoryDAO;
-	
+
 	@Autowired
 	ProductDAO productDAO;
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(ManagementController.class);
 
-	@GetMapping(value="/products")
-	public ModelAndView showManageProducts(@RequestParam(name="operation",required = false) String operation) {
+	@GetMapping(value = "/products")
+	public ModelAndView showManageProducts(@RequestParam(name = "operation", required = false) String operation) {
 		ModelAndView mv = new ModelAndView("page");
-		
-		mv.addObject("pageTitle","Manage Products");
-		mv.addObject("userClickManageProducts",true);
-		
-		Product newProduct= new Product();
+
+		mv.addObject("pageTitle", "Manage Products");
+		mv.addObject("userClickManageProducts", true);
+
+		Product newProduct = new Product();
 		newProduct.setSupplierId(1);
 		newProduct.setActive(true);
 		mv.addObject("product", newProduct);
-		
-		if(operation!=null) {
-			if(operation.equals("productSaved")) {
-				mv.addObject("message","Product saved successfully");
-			}
+
+		if (operation != null && operation.equals("productSaved")) {
+
+			mv.addObject("message", "Product saved successfully");
+
 		}
-		
+
 		return mv;
-		
+
 	}
-	
-	@ModelAttribute("categories") 
+
+	@ModelAttribute("categories")
 	public List<Category> modelCategories() {
 		return categoryDAO.listCategories();
 	}
-	
-	
-	//Save product (Using ModelAttribute to get the product object from spring form)
-	@PostMapping(value="/products")
-	public String handleProductSubmission(@ModelAttribute("product") Product mProduct) {
+
+	// Save product (Using ModelAttribute to get the product object from spring
+	// form)
+	@PostMapping(value = "/products")
+	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results, Model mv) {
 		
-		LOGGER.info("saving..." +mProduct);
-		//Saving the product
+		//Check if any errors in validation, if yes then add error message
+		if(results.hasErrors()) {
+			mv.addAttribute("pageTitle", "Manage Products");
+			mv.addAttribute("userClickManageProducts", true);
+			mv.addAttribute("message","Please enter valid details!!");
+			return "page";
+		}
+
+		LOGGER.info("saving..." + mProduct);
+		// Saving the product
 		productDAO.add(mProduct);
 
 		return "redirect:/manage/products?operation=productSaved";
-		
+
 	}
-	
-	
-	
+
 }
