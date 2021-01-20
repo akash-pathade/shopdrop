@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.akash.shopdrop.util.FileUploadUtility;
+import com.akash.shopdrop.validator.ProductImageValidator;
 import com.akash.shopdropbackend.dao.CategoryDAO;
 import com.akash.shopdropbackend.dao.ProductDAO;
 import com.akash.shopdropbackend.dto.Category;
@@ -68,6 +69,10 @@ public class ManagementController {
 	@PostMapping(value = "/products")
 	public String handleProductSubmission(@Valid @ModelAttribute("product") Product mProduct, BindingResult results,
 			Model mv, HttpServletRequest request) {
+		
+		//Invoke file validator
+		new ProductImageValidator().validate(mProduct,results);
+		
 
 		// Check if any errors in validation, if yes then add error message
 		if (results.hasErrors()) {
