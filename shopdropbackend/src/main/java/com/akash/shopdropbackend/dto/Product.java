@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,13 +23,18 @@ public class Product {
 	
 	private String code;
 	
+	@NotBlank(message="Name of product cannot be blank!")
 	private String name;
 	
+	@NotBlank(message="Name of Brand cannot be blank!")
 	private String brand;
 	
 	@JsonIgnore
+	@NotBlank(message="Description cannot be blank!")
 	private String description;
+	
 	@Column(name = "unit_price")
+	@Min(value=1, message="Please select at least one value!")
 	private double unitPrice;
 	
 	private int quantity;
